@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,7 +34,9 @@ namespace MathQuestgen
 
         private void comboBox_selectTemplate_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            webBrowser_preview.Url = new Uri(
+                Application.StartupPath + Path.DirectorySeparatorChar + "resources" + Path.DirectorySeparatorChar + "markdownToHtmlConvert.html"
+                );
         }
     }
 }
