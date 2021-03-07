@@ -34,9 +34,8 @@ namespace MathQuestgen
 
         private void comboBox_selectTemplate_SelectedIndexChanged(object sender, EventArgs e)
         {
-            webBrowser_preview.Url = new Uri(
-                Application.StartupPath + Path.DirectorySeparatorChar + "resources" + Path.DirectorySeparatorChar + "markdownToHtmlConvert.html"
-                );
+            webBrowser_preview.Load(
+                Application.StartupPath + Path.DirectorySeparatorChar + "resources" + Path.DirectorySeparatorChar + "preview.html");
         }
     }
 }

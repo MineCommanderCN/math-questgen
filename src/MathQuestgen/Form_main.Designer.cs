@@ -32,7 +32,7 @@ namespace MathQuestgen
             this.label_selectTemplate = new System.Windows.Forms.Label();
             this.comboBox_selectTemplate = new System.Windows.Forms.ComboBox();
             this.label_preview = new System.Windows.Forms.Label();
-            this.webBrowser_preview = new System.Windows.Forms.WebBrowser();
+            this.webBrowser_preview = new CefSharp.WinForms.ChromiumWebBrowser();
             this.SuspendLayout();
             // 
             // label_selectTemplate
@@ -47,6 +47,7 @@ namespace MathQuestgen
             // 
             // comboBox_selectTemplate
             // 
+            this.comboBox_selectTemplate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_selectTemplate.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBox_selectTemplate.FormattingEnabled = true;
             this.comboBox_selectTemplate.Location = new System.Drawing.Point(75, 21);
@@ -54,7 +55,6 @@ namespace MathQuestgen
             this.comboBox_selectTemplate.Size = new System.Drawing.Size(279, 25);
             this.comboBox_selectTemplate.TabIndex = 1;
             this.comboBox_selectTemplate.SelectedIndexChanged += new System.EventHandler(this.comboBox_selectTemplate_SelectedIndexChanged);
-            this.comboBox_selectTemplate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // label_preview
             // 
@@ -68,10 +68,10 @@ namespace MathQuestgen
             // 
             // webBrowser_preview
             // 
+            this.webBrowser_preview.ActivateBrowserOnCreation = false;
             this.webBrowser_preview.Location = new System.Drawing.Point(19, 102);
-            this.webBrowser_preview.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser_preview.Name = "webBrowser_preview";
-            this.webBrowser_preview.Size = new System.Drawing.Size(506, 310);
+            this.webBrowser_preview.Size = new System.Drawing.Size(484, 304);
             this.webBrowser_preview.TabIndex = 3;
             // 
             // Form_main
@@ -96,7 +96,7 @@ namespace MathQuestgen
         private System.Windows.Forms.Label label_selectTemplate;
         private System.Windows.Forms.ComboBox comboBox_selectTemplate;
         private System.Windows.Forms.Label label_preview;
-        private System.Windows.Forms.WebBrowser webBrowser_preview;
+        private CefSharp.WinForms.ChromiumWebBrowser webBrowser_preview;
     }
 }
 
