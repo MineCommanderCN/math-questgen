@@ -2,15 +2,30 @@
 <html>
 
 <head>
-    <script src="showdown.min.js"></script>
+    <script src="marked.min.js"></script>
 </head>
 <body>
     <div id="preview"> </div>
     <script>
-        var converter = new showdown.Converter(),
-              text      = '# hello, markdown!',
-              html      = converter.makeHtml(text);
-        document.getElementById('preview').innerHTML = html;
+        const tokenizer = {
+  codespan(src) {
+    const match = src.match(/\$+([^\$\n]+?)\$+/);
+    if (match) {
+      return {
+        type: 'codespan',
+        raw: match[0],
+        text: match[1].trim()
+      };
+    }
+
+    // return false to use original codespan tokenizer
+    return false;
+  }
+};
+
+marked.use({ tokenizer });
+document.getElementById('preview').innerHTML =
+      marked('# Marked in the browser\n\nRendered by **marked**.');
     </script>
 </body>
 
