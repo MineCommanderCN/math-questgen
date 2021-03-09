@@ -43,22 +43,12 @@ namespace MathQuestgen
   \label{eq:sample}
 \end{equation}
 $$", pipeline);
-            html = "<script src=\"mathjax.js\"></script>\n" + html; //HTML文件中加入mathjax引用
+            html = GeneralData.HTML_Preset + html; //将预设前缀连接到生成的HTML代码前面（别去看HTML_Preset，巨长巨长）
             string path = Environment.GetEnvironmentVariable("TEMP") + Path.DirectorySeparatorChar + "mathQuestgen-htmlTemp";
             Directory.CreateDirectory(path);
-            string[] files = Directory.GetFiles(Application.StartupPath + Path.DirectorySeparatorChar + "resources");
-            foreach (string file in files)
-            {
-                string otherFile = Path.Combine(path, Path.GetFileName(file));
-                if (File.Exists(otherFile))
-                {
-                    File.Delete(otherFile);
-                }
-                File.Copy(file, otherFile);
-            }   //将resources中的全部文件复制到缓存目录
             path = path + Path.DirectorySeparatorChar + "preview.html";
             File.WriteAllText(path, html); //将HTML文档写入缓存目录文件
-            webBrowser_preview.Load(path); //刷新webBrowser
+            webBrowser_preview.Url = new Uri(path); //刷新webBrowser
         }
     }
 }

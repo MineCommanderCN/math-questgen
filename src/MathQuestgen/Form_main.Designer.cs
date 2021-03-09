@@ -34,7 +34,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_singleQuestion = new System.Windows.Forms.TabPage();
             this.tabPage_batchGenerate = new System.Windows.Forms.TabPage();
-            this.webBrowser_preview = new CefSharp.WinForms.ChromiumWebBrowser();
+            this.webBrowser_preview = new System.Windows.Forms.WebBrowser();
             this.tabControl1.SuspendLayout();
             this.tabPage_singleQuestion.SuspendLayout();
             this.SuspendLayout();
@@ -136,7 +136,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage_singleQuestion;
         private System.Windows.Forms.TabPage tabPage_batchGenerate;
-        private CefSharp.WinForms.ChromiumWebBrowser webBrowser_preview;
+        private System.Windows.Forms.WebBrowser webBrowser_preview;
     }
 }
 

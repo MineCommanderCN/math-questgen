@@ -8,6 +8,8 @@ namespace MathQuestgen
 {
     public class GeneralData
     {
+        public static string HTML_Preset = "<!DOCTYPE HTML>\n<script type=\"text/x-mathjax-config\">\nMathJax.Hub.Config({ extensions:[\"tex2jax.js\"],jax:[\"input/TeX\", \"output/HTML-CSS\"],tex2jax: { inlineMath:[ ['$','$'], [\"\\\\(\",\"\\\\)\"] ],displayMath:[ ['$$','$$'], [\"\\\\[\",\"\\\\]\"] ]} }); MathJax.Hub.Queue([\"Typeset\", MathJax.Hub]);\n</script>\n<script src=\"https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js\"></script>\n";
+
         public List<QuestionTemplate> questionTemplates = new List<QuestionTemplate>();
 
         private GeneralData()
