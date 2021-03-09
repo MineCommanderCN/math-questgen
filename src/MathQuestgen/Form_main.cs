@@ -19,6 +19,7 @@ namespace MathQuestgen
         {
             foreach (var item in GeneralData.generalData.questionTemplates)
             {
+                //生成显示在菜单中的模板名称
                 string tmp = item.metadata.name + " - ";
                 switch (item.metadata.type)
                 {
@@ -42,7 +43,7 @@ namespace MathQuestgen
   \int_0^\infty \frac{x^3}{e^x-1}\,dx = \frac{\pi^4}{15}
   \label{eq:sample}
 \end{equation}
-$$", pipeline);
+$$", pipeline); //测试用的LaTeX公式
             html = GeneralData.HTML_Preset + html; //将预设前缀连接到生成的HTML代码前面（别去看HTML_Preset，巨长巨长）
             string path = Environment.GetEnvironmentVariable("TEMP") + Path.DirectorySeparatorChar + "mathQuestgen-htmlTemp";
             Directory.CreateDirectory(path);
