@@ -33,8 +33,8 @@
             this.label_preview = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_singleQuestion = new System.Windows.Forms.TabPage();
-            this.tabPage_batchGenerate = new System.Windows.Forms.TabPage();
             this.webBrowser_preview = new System.Windows.Forms.WebBrowser();
+            this.tabPage_batchGenerate = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage_singleQuestion.SuspendLayout();
             this.SuspendLayout();
@@ -94,6 +94,14 @@
             this.tabPage_singleQuestion.TabIndex = 0;
             this.tabPage_singleQuestion.Text = "单题生成&模板预览";
             // 
+            // webBrowser_preview
+            // 
+            this.webBrowser_preview.Location = new System.Drawing.Point(14, 106);
+            this.webBrowser_preview.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser_preview.Name = "webBrowser_preview";
+            this.webBrowser_preview.Size = new System.Drawing.Size(455, 283);
+            this.webBrowser_preview.TabIndex = 3;
+            // 
             // tabPage_batchGenerate
             // 
             this.tabPage_batchGenerate.BackColor = System.Drawing.SystemColors.Control;
@@ -103,14 +111,6 @@
             this.tabPage_batchGenerate.Size = new System.Drawing.Size(789, 423);
             this.tabPage_batchGenerate.TabIndex = 1;
             this.tabPage_batchGenerate.Text = "批量出题";
-            // 
-            // webBrowser_preview
-            // 
-            this.webBrowser_preview.Location = new System.Drawing.Point(14, 106);
-            this.webBrowser_preview.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser_preview.Name = "webBrowser_preview";
-            this.webBrowser_preview.Size = new System.Drawing.Size(455, 283);
-            this.webBrowser_preview.TabIndex = 3;
             // 
             // Form_main
             // 
