@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using Markdig;
+using System;
+using YamlDotNet;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO.Compression;
 using System.Windows.Forms;
-using Markdig;
-using Markdig.Extensions;
+using YamlDotNet.Serialization;
+using System.Collections.Generic;
+using System.Text;
 
 namespace MathQuestgen
 {
@@ -17,7 +14,38 @@ namespace MathQuestgen
     {
         private void Form_main_Load(object sender, EventArgs e)
         {
-            (new Form_loading()).ShowDialog();
+            FileInfo[] templates = (new DirectoryInfo(Application.StartupPath + Path.DirectorySeparatorChar + "templates")).GetFiles("*.mqt");
+            Directory.CreateDirectory(GeneralData.TempDirectory);
+            var serializer = new Serializer();
+            foreach (var file in templates)
+            {
+                var templateZipFile = ZipFile.OpenRead(file.FullName);
+                QuestionTemplate template = new QuestionTemplate();
+                foreach (var fileInZip in templateZipFile.Entries)
+                {
+                    if (fileInZip.FullName == "metadata.yml")
+                    {
+                        //MessageBox.Show("Got metadata!");
+                        Dictionary<string, string> metadataDict =
+                            (new Deserializer()).Deserialize<Dictionary<string, string>>(Tools.ReadStringFromStream(
+                                fileInZip.Open(), 1024 * 1024 * 4 /*文件最大不超过4M*/, Encoding.UTF8
+                                ));
+                        template.metadata = new QuestionTemplate.Metadata
+                        {
+                            name = metadataDict["name"],
+                            type = (QuestionTemplate.TemplateTypes)Enum.Parse(typeof(QuestionTemplate.TemplateTypes), metadataDict["type"])
+                        };
+                    }
+                    else if (fileInZip.FullName == "question_stem.txt")
+                    {
+                        string[] fileLines =
+                            Tools.ReadStringFromStream(fileInZip.Open(), 1024 * 1024 * 4 /*文件最大不超过4M*/, Encoding.UTF8)
+                            .Split('\n');
+                        //blablabla
+                    }
+                }
+                GeneralData.generalData.questionTemplates.Add(template);
+            }
             foreach (var item in GeneralData.generalData.questionTemplates)
             {
                 //生成显示在菜单中的模板名称

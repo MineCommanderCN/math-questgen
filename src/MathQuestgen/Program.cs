@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MathQuestgen
@@ -14,7 +11,7 @@ namespace MathQuestgen
         [STAThread]
         static void Main()
         {
-            
+
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

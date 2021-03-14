@@ -17,9 +17,7 @@ namespace MathQuestgen
         }
         public class Metadata
         {
-            public string creator;
             public string name;
-            public int formatVersion;
             public TemplateTypes type;
         }
         public Metadata metadata = new Metadata();
