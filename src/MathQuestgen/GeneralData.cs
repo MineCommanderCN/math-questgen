@@ -5,6 +5,19 @@ using System.Text;
 
 namespace MathQuestgen
 {
+    public class UnknownTemplateTypeException : ApplicationException
+    {
+        string type;
+        public UnknownTemplateTypeException(string message, string type) : base(message)
+        {
+            this.type = type;
+        }
+        public UnknownTemplateTypeException(string type) : base()
+        {
+            this.type = type;
+        }
+    }
+
     public static class Tools
     {
         public static string ReadStringFromStream(Stream stream, int maxSize, Encoding encoding)
@@ -17,35 +30,30 @@ namespace MathQuestgen
 
     public class GeneralData
     {
-        public static string HTML_Preset = "<!DOCTYPE HTML>\n<script type=\"text/x-mathjax-config\">\nMathJax.Hub.Config({ extensions:[\"tex2jax.js\"],jax:[\"input/TeX\", \"output/HTML-CSS\"],tex2jax: { inlineMath:[ ['$','$'], [\"\\\\(\",\"\\\\)\"] ],displayMath:[ ['$$','$$'], [\"\\\\[\",\"\\\\]\"] ]} }); MathJax.Hub.Queue([\"Typeset\", MathJax.Hub]);\n</script>\n<script src=\"https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js\"></script>\n";
+        public static string HTML_Preset = "<!DOCTYPE HTML>\n<script type=\"text/x-mathjax-config\">\nMathJax.Hub.Config({showProcessingMessages:false,messageStyle:\"none\",extensions:[\"tex2jax.js\"],jax:[\"input/TeX\", \"output/HTML-CSS\"],tex2jax:{inlineMath:[['$','$'],[\"\\\\(\",\"\\\\)\"]],displayMath:[['$$','$$'],[\"\\\\[\",\"\\\\]\"] ]},'HTML-CSS':{showMathMenu:false}});MathJax.Hub.Queue([\"Typeset\",MathJax.Hub]);\n</script>\n<script src=\"https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js\"></script>\n";
         public static string TempDirectory = Environment.GetEnvironmentVariable("TEMP") + Path.DirectorySeparatorChar + "mathQuestgen";
-        public static string Version = "dev.20210314";
+        public static string Version = "dev.20210315";
 
-        public List<QuestionTemplate> questionTemplates = new List<QuestionTemplate>();
+        public Dictionary<int /*ID*/ , QuestionTemplate> questionTemplates = new Dictionary<int, QuestionTemplate>();
 
         private GeneralData()
         {
-            questionTemplates.Add(new ChoiceQuestionTemplate
-            {
-                questionStems = new List<string> { "" },
-                metadata = new QuestionTemplate.Metadata { name = "测试用", type = QuestionTemplate.TemplateTypes.choice }
-            }
-            );
+
         }
-        private static GeneralData instance = null;
-        public static GeneralData generalData
+        private static GeneralData _instance = null;
+        public static GeneralData Instance
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    instance = new GeneralData();
+                    _instance = new GeneralData();
                 }
-                return instance;
+                return _instance;
             }
             set
             {
-                instance = value;
+                _instance = value;
             }
         }
     }
