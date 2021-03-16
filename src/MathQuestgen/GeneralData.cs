@@ -35,6 +35,7 @@ namespace MathQuestgen
         public static string Version = "dev.20210315";
 
         public Dictionary<int /*ID*/ , QuestionTemplate> questionTemplates = new Dictionary<int, QuestionTemplate>();
+        public bool firstLoad = true;
 
         private GeneralData()
         {

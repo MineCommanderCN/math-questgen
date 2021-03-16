@@ -14,6 +14,10 @@ namespace MathQuestgen
     {
         private void Form_main_Activated(object sender, EventArgs e)
         {
+            if (!GeneralData.Instance.firstLoad)
+            {
+                return;
+            }
             FileInfo[] templates = (new DirectoryInfo(Application.StartupPath + Path.DirectorySeparatorChar + "templates")).GetFiles("*.mqt");
             Directory.CreateDirectory(GeneralData.TempDirectory);
             var serializer = new Serializer();
@@ -89,6 +93,9 @@ namespace MathQuestgen
                 }
                 //comboBox_selectTemplate.Items.Add(tmp);
             }
+
+            this.Text = "MathQuestgen - 数学出题工具";
+            GeneralData.Instance.firstLoad = false;
         }
         public Form_main()
         {
@@ -115,7 +122,7 @@ namespace MathQuestgen
 
         private void button_selectTemplate_Click(object sender, EventArgs e)
         {
-
+            (new Form_dialog_selectTemplate()).ShowDialog();
         }
     }
 }
