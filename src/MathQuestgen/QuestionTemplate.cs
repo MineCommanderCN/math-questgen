@@ -12,7 +12,15 @@ namespace MathQuestgen
         public List<string> conditionScripts = new List<string>();
         public string answerScript;
         public string name;
-        public List<string> questionStems = new List<string>();
+        public List<string> questionTexts = new List<string>();
+        public List<string> tags;
+
+        public struct YamlMetadataFormat //YAML源信息格式
+        {
+            public string name;
+            public string type;
+            public List<string> tags;
+        }
     }
     public class ChoiceQuestionTemplate : QuestionTemplate
     //选择题

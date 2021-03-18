@@ -30,11 +30,11 @@ namespace MathQuestgen
                 {
                     if (fileInZip.FullName == "metadata.yml")
                     {
-                        Dictionary<string, string> metadataDict =
-                            (new Deserializer()).Deserialize<Dictionary<string, string>>(Tools.ReadStringFromStream(
+                        QuestionTemplate.YamlMetadataFormat metadata =
+                            (new Deserializer()).Deserialize<QuestionTemplate.YamlMetadataFormat>(Tools.ReadStringFromStream(
                                 fileInZip.Open(), 1024 * 1024 * 4 /*文件最大不超过4M*/, Encoding.UTF8
                                 ));
-                        switch (metadataDict["type"])
+                        switch (metadata.type)
                         //简单工厂模式
                         {
                             case "choice":
@@ -44,29 +44,30 @@ namespace MathQuestgen
                             case "calculation":
                                 template = new CalcultaionQuestionTemplate(); break;
                             default:
-                                throw new UnknownTemplateTypeException(metadataDict["type"],
-                           "未知的模板类型'" + metadataDict["type"] + "'。");
+                                throw new UnknownTemplateTypeException(metadata.type,
+                           "未知的模板类型'" + metadata.type + "'。");
                         }
-                        template.name = metadataDict["name"];
+                        template.name = metadata.name;
+                        template.tags = metadata.tags;
                     }
-                    else if (fileInZip.FullName == "question_stem.txt")
+                    else if (fileInZip.FullName == "question_text.txt")
                     {
                         string[] fileLines =
                             Tools.ReadStringFromStream(fileInZip.Open(), 1024 * 1024 * 4 /*文件最大不超过4M*/, Encoding.UTF8)
                             .Split('\n'); //将文件分行“切片”
-                        List<string> questionStems = new List<string>();
-                        string stemTmp = "";
+                        List<string> questionTexts = new List<string>();
+                        string textTmp = "";
                         foreach (var line in fileLines)
                         {
                             if (line.Trim() == "----") //检测到分割线
                             {
-                                questionStems.Add(stemTmp);
-                                stemTmp = "";
+                                questionTexts.Add(textTmp);
+                                textTmp = "";
                                 //将缓存内的字符串压入题干列表并清空
                             }
                             else
                             {
-                                stemTmp += line + "\n";
+                                textTmp += line + "\n";
                                 //以换行符间隔连接行内容
                             }
                         }

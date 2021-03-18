@@ -27,9 +27,20 @@ namespace MathQuestgen
             ToolTip toolTip = new ToolTip();
             toolTip.AutoPopDelay = 10000;
             toolTip.InitialDelay = 0;
-            toolTip.ReshowDelay = 500;
+            toolTip.ReshowDelay = 0;
             toolTip.ShowAlways = true;
             toolTip.SetToolTip(this.checkBox_hideTip, "你可以按下F2键来重新显示提示。");
+        }
+
+        private void Form_dialog_selectTemplate_Load(object sender, EventArgs e)
+        {
+            foreach (var template in GeneralData.Instance.questionTemplates)
+            {
+                int index = this.dataGridView_templates.Rows.Add();
+                dataGridView_templates.Rows[index].Cells["Column_id"].Value = template.Key;
+                dataGridView_templates.Rows[index].Cells["Column_name"].Value = template.Value.name;
+                dataGridView_templates.Rows[index].Cells["Column_tags"].Value = string.Join(", ", template.Value.tags.ToArray());
+            }
         }
     }
 }
