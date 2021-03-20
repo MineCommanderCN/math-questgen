@@ -31,9 +31,9 @@
             this.label_preview = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_singleQuestion = new System.Windows.Forms.TabPage();
+            this.button_selectTemplate = new System.Windows.Forms.Button();
             this.webBrowser_preview = new System.Windows.Forms.WebBrowser();
             this.tabPage_batchGenerate = new System.Windows.Forms.TabPage();
-            this.button_selectTemplate = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage_singleQuestion.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +71,16 @@
             this.tabPage_singleQuestion.TabIndex = 0;
             this.tabPage_singleQuestion.Text = "单题生成&模板预览";
             // 
+            // button_selectTemplate
+            // 
+            this.button_selectTemplate.Location = new System.Drawing.Point(14, 23);
+            this.button_selectTemplate.Name = "button_selectTemplate";
+            this.button_selectTemplate.Size = new System.Drawing.Size(108, 31);
+            this.button_selectTemplate.TabIndex = 4;
+            this.button_selectTemplate.Text = "选择模板";
+            this.button_selectTemplate.UseVisualStyleBackColor = true;
+            this.button_selectTemplate.Click += new System.EventHandler(this.button_selectTemplate_Click);
+            // 
             // webBrowser_preview
             // 
             this.webBrowser_preview.Location = new System.Drawing.Point(14, 93);
@@ -85,26 +95,18 @@
             this.tabPage_batchGenerate.Location = new System.Drawing.Point(4, 22);
             this.tabPage_batchGenerate.Name = "tabPage_batchGenerate";
             this.tabPage_batchGenerate.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_batchGenerate.Size = new System.Drawing.Size(789, 423);
+            this.tabPage_batchGenerate.Size = new System.Drawing.Size(682, 429);
             this.tabPage_batchGenerate.TabIndex = 1;
             this.tabPage_batchGenerate.Text = "批量出题";
-            // 
-            // button_selectTemplate
-            // 
-            this.button_selectTemplate.Location = new System.Drawing.Point(14, 23);
-            this.button_selectTemplate.Name = "button_selectTemplate";
-            this.button_selectTemplate.Size = new System.Drawing.Size(108, 31);
-            this.button_selectTemplate.TabIndex = 4;
-            this.button_selectTemplate.Text = "选择模板";
-            this.button_selectTemplate.UseVisualStyleBackColor = true;
-            this.button_selectTemplate.Click += new System.EventHandler(this.button_selectTemplate_Click);
             // 
             // Form_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(691, 450);
+            this.ClientSize = new System.Drawing.Size(690, 462);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Form_main";
             this.Text = "MathQuestgen - 加载中...";
             this.Activated += new System.EventHandler(this.Form_main_Activated);

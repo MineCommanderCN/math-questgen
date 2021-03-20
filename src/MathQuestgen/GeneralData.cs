@@ -18,7 +18,7 @@ namespace MathQuestgen
         }
     }
 
-    public static class Tools
+    public static partial class Tools
     {
         public static string ReadStringFromStream(Stream stream, int maxSize, Encoding encoding)
         {

@@ -6,10 +6,19 @@ using System.Threading.Tasks;
 
 namespace MathQuestgen
 {
+    public class TemplateFilesBase64
+    //用于JSON读取
+    {
+        public string metadata;
+        public string questionText;
+        public string script_answer;
+        public string script_interference;
+        public Dictionary<string, string> script_condition = new Dictionary<string, string>();
+    }
     public class QuestionTemplate
     //题目模板 - 父类
     {
-        public List<string> conditionScripts = new List<string>();
+        public Dictionary<string, string> conditionScripts = new Dictionary<string, string>();
         public string answerScript;
         public string name;
         public List<string> questionTexts = new List<string>();
@@ -32,7 +41,7 @@ namespace MathQuestgen
     {
 
     }
-    public class CalcultaionQuestionTemplate : QuestionTemplate
+    public class CalculaionQuestionTemplate : QuestionTemplate
     //计算题
     {
 

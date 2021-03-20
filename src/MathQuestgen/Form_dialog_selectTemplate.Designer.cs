@@ -32,12 +32,12 @@ namespace MathQuestgen
             this.label_tip = new System.Windows.Forms.Label();
             this.checkBox_hideTip = new System.Windows.Forms.CheckBox();
             this.dataGridView_templates = new System.Windows.Forms.DataGridView();
-            this.textBox_search = new System.Windows.Forms.TextBox();
-            this.button_select = new System.Windows.Forms.Button();
-            this.button_search = new System.Windows.Forms.Button();
             this.Column_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_tags = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox_search = new System.Windows.Forms.TextBox();
+            this.button_select = new System.Windows.Forms.Button();
+            this.button_search = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_templates)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +84,27 @@ namespace MathQuestgen
             this.dataGridView_templates.Size = new System.Drawing.Size(609, 467);
             this.dataGridView_templates.TabIndex = 2;
             // 
+            // Column_id
+            // 
+            this.Column_id.HeaderText = "ID";
+            this.Column_id.Name = "Column_id";
+            this.Column_id.ReadOnly = true;
+            this.Column_id.Width = 75;
+            // 
+            // Column_name
+            // 
+            this.Column_name.HeaderText = "名称";
+            this.Column_name.Name = "Column_name";
+            this.Column_name.ReadOnly = true;
+            this.Column_name.Width = 250;
+            // 
+            // Column_tags
+            // 
+            this.Column_tags.HeaderText = "标签";
+            this.Column_tags.Name = "Column_tags";
+            this.Column_tags.ReadOnly = true;
+            this.Column_tags.Width = 300;
+            // 
             // textBox_search
             // 
             this.textBox_search.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -112,30 +133,6 @@ namespace MathQuestgen
             this.button_search.Text = "搜索";
             this.button_search.UseVisualStyleBackColor = true;
             // 
-            // Column_id
-            // 
-            this.Column_id.HeaderText = "ID";
-            this.Column_id.Name = "Column_id";
-            this.Column_id.ReadOnly = true;
-            this.Column_id.Width = 75;
-            this.Column_id.ValueType = typeof(int);
-            // 
-            // Column_name
-            // 
-            this.Column_name.HeaderText = "名称";
-            this.Column_name.Name = "Column_name";
-            this.Column_name.ReadOnly = true;
-            this.Column_name.Width = 250;
-            this.Column_id.ValueType = typeof(string);
-            // 
-            // Column_tags
-            // 
-            this.Column_tags.HeaderText = "标签";
-            this.Column_tags.Name = "Column_tags";
-            this.Column_tags.ReadOnly = true;
-            this.Column_tags.Width = 300;
-            this.Column_id.ValueType = typeof(string);
-            // 
             // Form_dialog_selectTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -147,6 +144,8 @@ namespace MathQuestgen
             this.Controls.Add(this.dataGridView_templates);
             this.Controls.Add(this.checkBox_hideTip);
             this.Controls.Add(this.label_tip);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Form_dialog_selectTemplate";
             this.Text = "选择模板";
             this.Load += new System.EventHandler(this.Form_dialog_selectTemplate_Load);

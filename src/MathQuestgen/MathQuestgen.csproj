@@ -41,6 +41,9 @@
     <Reference Include="Markdig, Version=0.23.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Markdig.0.23.0\lib\net452\Markdig.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
@@ -49,8 +52,6 @@
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -76,6 +77,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form_loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_loading.Designer.cs">
+      <DependentUpon>Form_loading.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_dialog_selectTemplate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +102,9 @@
     <Compile Include="QuestionTemplate.cs" />
     <EmbeddedResource Include="Form_dialog_selectTemplate.resx">
       <DependentUpon>Form_dialog_selectTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_loading.resx">
+      <DependentUpon>Form_loading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_main.resx">
       <DependentUpon>Form_main.cs</DependentUpon>

@@ -1,0 +1,1 @@
+return randSeed % 11 + 1;
