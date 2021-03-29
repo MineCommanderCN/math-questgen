@@ -32,11 +32,11 @@ namespace MathQuestgen
             this.label_tip = new System.Windows.Forms.Label();
             this.checkBox_hideTip = new System.Windows.Forms.CheckBox();
             this.dataGridView_templates = new System.Windows.Forms.DataGridView();
+            this.Column_selectButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_tags = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox_search = new System.Windows.Forms.TextBox();
-            this.button_select = new System.Windows.Forms.Button();
             this.button_search = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_templates)).BeginInit();
             this.SuspendLayout();
@@ -71,6 +71,7 @@ namespace MathQuestgen
             this.dataGridView_templates.AllowUserToOrderColumns = true;
             this.dataGridView_templates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_templates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column_selectButton,
             this.Column_id,
             this.Column_name,
             this.Column_tags});
@@ -83,6 +84,16 @@ namespace MathQuestgen
             this.dataGridView_templates.ShowEditingIcon = false;
             this.dataGridView_templates.Size = new System.Drawing.Size(609, 467);
             this.dataGridView_templates.TabIndex = 2;
+            this.dataGridView_templates.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_templates_CellContentClock);
+            // 
+            // Column_selectButton
+            // 
+            this.Column_selectButton.HeaderText = "";
+            this.Column_selectButton.Name = "Column_selectButton";
+            this.Column_selectButton.ReadOnly = true;
+            this.Column_selectButton.Text = "选择";
+            this.Column_selectButton.UseColumnTextForButtonValue = true;
+            this.Column_selectButton.Width = 75;
             // 
             // Column_id
             // 
@@ -110,23 +121,13 @@ namespace MathQuestgen
             this.textBox_search.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox_search.Location = new System.Drawing.Point(12, 21);
             this.textBox_search.Name = "textBox_search";
-            this.textBox_search.Size = new System.Drawing.Size(423, 26);
+            this.textBox_search.Size = new System.Drawing.Size(524, 26);
             this.textBox_search.TabIndex = 3;
-            // 
-            // button_select
-            // 
-            this.button_select.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_select.Location = new System.Drawing.Point(542, 19);
-            this.button_select.Name = "button_select";
-            this.button_select.Size = new System.Drawing.Size(79, 31);
-            this.button_select.TabIndex = 5;
-            this.button_select.Text = "选定";
-            this.button_select.UseVisualStyleBackColor = true;
             // 
             // button_search
             // 
             this.button_search.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_search.Location = new System.Drawing.Point(457, 19);
+            this.button_search.Location = new System.Drawing.Point(542, 19);
             this.button_search.Name = "button_search";
             this.button_search.Size = new System.Drawing.Size(79, 31);
             this.button_search.TabIndex = 6;
@@ -139,7 +140,6 @@ namespace MathQuestgen
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(633, 629);
             this.Controls.Add(this.button_search);
-            this.Controls.Add(this.button_select);
             this.Controls.Add(this.textBox_search);
             this.Controls.Add(this.dataGridView_templates);
             this.Controls.Add(this.checkBox_hideTip);
@@ -149,6 +149,7 @@ namespace MathQuestgen
             this.Name = "Form_dialog_selectTemplate";
             this.Text = "选择模板";
             this.Load += new System.EventHandler(this.Form_dialog_selectTemplate_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form_dialog_selectTemplate_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_templates)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -161,8 +162,8 @@ namespace MathQuestgen
         private System.Windows.Forms.CheckBox checkBox_hideTip;
         private System.Windows.Forms.DataGridView dataGridView_templates;
         private System.Windows.Forms.TextBox textBox_search;
-        private System.Windows.Forms.Button button_select;
         private System.Windows.Forms.Button button_search;
+        private System.Windows.Forms.DataGridViewButtonColumn Column_selectButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_tags;

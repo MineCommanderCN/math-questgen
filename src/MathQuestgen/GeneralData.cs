@@ -36,6 +36,7 @@ namespace MathQuestgen
 
         public Dictionary<int /*ID*/ , QuestionTemplate> questionTemplates = new Dictionary<int, QuestionTemplate>();
         public bool firstLoad = true;
+        public int selectedTemplateID = -1;
 
         private GeneralData()
         {

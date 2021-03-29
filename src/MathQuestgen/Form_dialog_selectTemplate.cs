@@ -19,7 +19,8 @@ namespace MathQuestgen
 
         private void checkBox_hideTip_CheckedChanged(object sender, EventArgs e)
         {
-
+            this.label_tip.Hide();
+            this.checkBox_hideTip.Hide();
         }
 
         private void checkBox_hideTip_MouseHover(object sender, EventArgs e)
@@ -40,6 +41,22 @@ namespace MathQuestgen
                 dataGridView_templates.Rows[index].Cells["Column_id"].Value = template.Key;
                 dataGridView_templates.Rows[index].Cells["Column_name"].Value = template.Value.name;
                 dataGridView_templates.Rows[index].Cells["Column_tags"].Value = string.Join(", ", template.Value.tags.ToArray());
+            }
+        }
+
+        private void dataGridView_templates_CellContentClock(object sender, DataGridViewCellEventArgs e)
+        {
+            GeneralData.Instance.selectedTemplateID = e.RowIndex;
+            this.Close();
+        }
+
+        private void Form_dialog_selectTemplate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                this.checkBox_hideTip.Checked = false;
+                this.checkBox_hideTip.Show();
+                this.label_tip.Show();
             }
         }
     }

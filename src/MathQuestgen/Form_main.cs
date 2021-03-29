@@ -15,6 +15,18 @@ namespace MathQuestgen
         {
             if (!GeneralData.Instance.firstLoad)
             {
+                var pipeline = new MarkdownPipelineBuilder().UseMathematics().Build();
+                //       string html = Markdown.ToHtml(GeneralData.Instance.questionTemplates[comboBox_selectTemplate.SelectedIndex]
+                //           .questionStems[0] //默认显示第一个题干
+                //          , pipeline);
+                string html = Markdown.ToHtml("Selected ID " + GeneralData.Instance.selectedTemplateID.ToString()
+                         , pipeline);
+                html = GeneralData.HTML_Preset + html; //将预设前缀连接到生成的HTML代码前面（别去看HTML_Preset，巨长巨长）
+
+                string path = GeneralData.TempDirectory + Path.DirectorySeparatorChar + "preview.html";
+                File.WriteAllText(path, html); //将HTML文档写入缓存目录文件
+                webBrowser_preview.Url = new Uri(path); //刷新webBrowser
+
                 return;
             }
             FileInfo[] templates = (new DirectoryInfo(Application.StartupPath + Path.DirectorySeparatorChar + "templates")).GetFiles("*.mqt");
